@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: reatang
- * Date: 17/3/31
- * Time: 下午3:22
- */
 
 namespace Firefly\Communication\EventSource;
 
