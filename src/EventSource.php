@@ -24,12 +24,14 @@ class EventSource
 
     /**
      * Ready to send the information list
+     *
      * @var array
      */
     protected $messageList = [];
 
     /**
      * Set next event id
+     *
      * @var string
      */
     protected $nextEventId;
@@ -64,6 +66,7 @@ class EventSource
 
     /**
      * Remove a message
+     *
      * @param MessageInterface $message
      */
     public function remove(MessageInterface $message)
@@ -91,6 +94,7 @@ class EventSource
 
     /**
      * Set next Event ID
+     *
      * @param string $id
      *
      * @return $this
@@ -140,6 +144,7 @@ class EventSource
 
     /**
      * Build message
+     *
      * @param string|MessageInterface $data
      * @param string|null    $event
      * @param string|null    $id
