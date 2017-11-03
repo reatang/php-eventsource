@@ -6,7 +6,7 @@ namespace Firefly\Communication\EventSource;
 interface MessageInterface
 {
     /**
-     * @return string
+     * @return string|null
      */
     public function getEvent();
 

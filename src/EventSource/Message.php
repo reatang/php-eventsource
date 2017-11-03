@@ -21,7 +21,7 @@ class Message implements MessageInterface
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getEvent()
     {
