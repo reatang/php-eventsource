@@ -30,7 +30,7 @@ $app->get('/server', function (Request $request, Response $response) {
     $eventSource->setNextEventId((int) $eventSource->getLastEventId() + 1);
 
     $msg = new Message('a simple message');
-    $msg2 = new Message(date('c'), 'event_name');
+    $msg2 = new Message(date('c'), 'some_event_name');
 
     $eventSource->add($msg);
     $eventSource->add($msg2);

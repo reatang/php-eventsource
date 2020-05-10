@@ -22,7 +22,7 @@
     source.onmessage = function(e) {
       console.log(e.data);
     };
-    source.addEventListener('event_name', function (evt) {
+    source.addEventListener('some_event_name', function (evt) {
       output.innerHTML = evt.data;
 
       return;

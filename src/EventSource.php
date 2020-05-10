@@ -37,6 +37,16 @@ class EventSource
     protected $nextEventId;
 
     /**
+     * Retry ms time
+     */
+    protected $retry = 3000;
+
+    /**
+     * is sent retry time
+     */
+    private $refreshRetry = false;
+
+    /**
      * @param RequestInterface  $request
      * @param ResponseInterface $response
      */
@@ -107,6 +117,21 @@ class EventSource
     }
 
     /**
+     * set browser retry time
+     * 
+     * @param int $retry ms time
+     * 
+     * @return $this
+     */
+    public function setRetryTime($retry) {
+        $this->retry = $retry;
+
+        $this->refreshRetry = true;
+
+        return $this;
+    }
+
+    /**
      * return response
      *
      * @return ResponseInterface
@@ -131,6 +156,12 @@ class EventSource
     {
         $data = '';
 
+        if ($this->refreshRetry || empty($this->getLastEventId())) {
+            $data .= $this->buildRetry();
+
+            $this->refreshRetry = false;
+        }
+
         if (!is_null($this->nextEventId)) {
             $data .= $this->buildMessage($this->nextEventId, '_event_sync', $this->nextEventId);
         }
@@ -146,7 +177,7 @@ class EventSource
      * Build message
      *
      * @param string|MessageInterface $data
-     * @param string|null    $event
+     * @param string|null    $event  default is "message" event
      * @param string|null    $id
      *
      * @return string
@@ -174,5 +205,9 @@ class EventSource
 
         //data and return
         return $line . 'data: ' . $_data . self::CRLF . self::CRLF;
+    }
+
+    protected function buildRetry () {
+        return 'retry:' . $this->retry . self::CRLF;
     }
 }

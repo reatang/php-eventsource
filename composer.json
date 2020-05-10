@@ -1,6 +1,6 @@
 {
     "name": "firefly-php/php-eventsource",
-    "description": "A simple EventSource server",
+    "description": "A simple EventSource server, not a standard implement, EventSource need long-connection",
     "license": "MIT",
     "type": "library",
     "authors": [
